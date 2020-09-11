@@ -127,6 +127,22 @@ Method: Unsurpervised learning might be better for this task as we have no pre-l
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 4}
 
+\textbf{(i)}
+
+Because you may not have every possible input to be in your traning example, a pure memerization approach won't be useful when facing input outside of seen examples. We should capture a concept that is applicable to general cases, base on the features and patterns of traning example, but not the just try to map the input with its ``memorized'' examples without any intelligent reasoning in between.
+
+A human learning example is that a human student may memorize the area of a retangle with $x$ length and $y$ width, but unless the student may capture the concept of $area = x \cdot y$, this student may not be able to find out the area of a retangle with edge of $x'$ and $y'$.\newline
+
+\noindent\textbf{(ii)}
+
+It is possible the target concept of a task is not contained  in its hypothesis space. If we set the hypothesis space to be big enough to contain every possible hypotheses, so that the target hypothesis is guaranteed to be include; this hypothesis space will also include the concept of simply memorize all your examples. This memerization concept will perform just as well -- if not better -- than your target concept and might became the final concept produced by the program, in this case the program is not learning.
+
+A human learning example, still on area of retangle with edge $x$ and $y$ would be if we expose the human to every hypotheses -- $x + y$, $x-y$, $xy$, $f(x, y)$, filling smaller squres, etc -- the hypothsis of simply remember the area of every given example will be in this hypothesis space. Since the performance of this memerization concept is just as good as calculating $xy$ (the target concept) on examples, the human might just do the memorization without any actual learning.\newline
+
+\noindent\textbf{(iii)}
+
+Because if the set of example represenation is heavily lacked or flawed, the produced concept upon it might also be lacked or flawed. Say we have a set of example represenation of calculating abosulte value of a number $X$ ($|X|$). If this example representation includes no example of $X$ being negative, the produced concept might be $|X| = X$ and it will perform perfectly. However, when given $X < 0$ the output of this concept will be false, and we may avoid this mistake by include example of $X<0$ in our example represenation in first place.
+
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
