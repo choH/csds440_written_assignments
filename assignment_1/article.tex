@@ -98,6 +98,30 @@ Since the square distance is $D = (x_1 - x_2) ^ 2$, its expected value is $E[(x_
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 3}
 
+\textbf{First Task}
+
+Goal: Determine if an English sentence is grammatically correct.
+
+Example: A lot of correctly and incorrectly written sentences, each lablled accordingly.
+
+Performance Measure: Run the program and see how many sentences did the program correctly recognized.
+
+Hypothesis Space: The program will probably try out many different types of possible language grammar during the training, this will be the hypothesis space. The program will, if sucessfully implemented, eventually capture the target concept among these tried hypotheses.
+
+Method: Supervised learning, as we may have pre-labbled sentences as examples.\newline
+
+\noindent\textbf{Second Task}
+
+Goal: Determine the right time to buy or sell a particular stock to maximal profit.
+
+Example: News articles related to the stock.
+
+Performance Measure: If the result trading strategy may perform better than the stock market average return, e.g. S&P 500.
+
+Hypothesis Space: The program will probably try out different conjuctions of news articles properties -- e.g. emotion of vocabularies, frequency of words, etc -- and connect them to the buy or sell behavior.
+
+Method: Unsurpervised learning might be better for this task as we have no pre-labbled example. The program will hopefully be able to recognize some pattern of the cluster of article-stock combos which will grown up (and also drop down), and connect the right trading decision to these clusters.
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
