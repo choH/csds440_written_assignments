@@ -37,7 +37,7 @@
 
 \title{\textbf{CSDS 440: Assignment 1}}
 
-\author{Shaochen (Henry) ZHONG, \inlinecode{sxz517} \\ Mingyang Tie, \inlinecode{mxt497}}
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang Tie, \ilcode{mxt497}}
 \date{Due on and submitted on 09/11/2020}
 \maketitle
 
@@ -65,15 +65,13 @@ And this proven the statement.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 2}
 
-We can will this problem of having two points $x_1$ and $x_2$, uniformaly distributed on a line with a length of $\sqrt{2}$, since this is the length of function $x+y = 1$ in interval $(0, 1)$ is $\sqrt{2}$). Let $x$ be a random varianle $\in[0, \sqrt{2}]$, the PDF of this $x$ would be:
+We can view this problem as having two points $x_1$ and $x_2$ uniformaly distributed on a line with a length of $\sqrt{2}$, since this is the length of function $x+y = 1$ in interval $(0, 1)$ is $\sqrt{2}$). Let $x$ be a random varianle $\in[0, \sqrt{2}]$, the PDF of this $x$ would be:
 
 \[ f(x) = \begin{cases}
       \frac{1}{\sqrt{2}} & x \in [0, \sqrt{2}]\\
       0 & \text{otherwise}
    \end{cases}
 \]
-
-To calculate the square distance, we have $D = (x_1 - x_2) ^ 2$ and we have $E[(x_1 - x_2)^2] = E(x^2_1 - 2x_1x_2 +  x^2_2) =  E(x_1^2) + 2E(x_1\cdot x_2) + E(x_2)^2$
 
 For $x_1$ and $x_2$, since the placement of two points are independent, we have the joint PDF of $x_1, x_2$ to be:
 
@@ -102,11 +100,11 @@ Since the square distance is $D = (x_1 - x_2) ^ 2$, its expected value is $E[(x_
 
 Goal: Determine if an English sentence is grammatically correct.
 
-Example: A lot of correctly and incorrectly written sentences, each lablled accordingly.
+Example: A lot of correctly and incorrectly written sentences, each labeled accordingly.
 
 Performance Measure: Run the program and see how many sentences did the program correctly recognized.
 
-Hypothesis Space: The program will probably try out many different types of possible language grammar during the training, this will be the hypothesis space. The program will, if sucessfully implemented, eventually capture the target concept among these tried hypotheses.
+Hypothesis Space: The program will probably try out many different types of possible language grammar during the training, this will be the hypothesis space. The program will, if sucessfully implemented, eventually capture the target concept (English grammar) among these tried hypotheses.
 
 Method: Supervised learning, as we may have pre-labbled sentences as examples.\newline
 
@@ -116,7 +114,7 @@ Goal: Determine the right time to buy or sell a particular stock to maximal prof
 
 Example: News articles related to the stock.
 
-Performance Measure: If the result trading strategy may perform better than the stock market average return, e.g. S&P 500.
+Performance Measure: If the result trading strategy may perform better than the stock market average return, e.g. S\&P 500.
 
 Hypothesis Space: The program will probably try out different conjuctions of news articles properties -- e.g. emotion of vocabularies, frequency of words, etc -- and connect them to the buy or sell behavior.
 
@@ -129,15 +127,15 @@ Method: Unsurpervised learning might be better for this task as we have no pre-l
 
 \textbf{(i)}
 
-Because you may not have every possible input to be in your traning example, a pure memerization approach won't be useful when facing input outside of seen examples. We should capture a concept that is applicable to general cases, base on the features and patterns of traning example, but not the just try to map the input with its ``memorized'' examples without any intelligent reasoning in between.
+Because you may not have every possible input to be in your traning example, thus a pure memerization approach won't be useful when facing input outside of seen examples. We should capture a concept that is applicable to general cases, base on the features and patterns of traning example, but not the just try to map the input with its ``memorized'' examples without any intelligent reasoning in between.
 
-A human learning example is that a human student may memorize the area of a retangle with $x$ length and $y$ width, but unless the student may capture the concept of $area = x \cdot y$, this student may not be able to find out the area of a retangle with edge of $x'$ and $y'$.\newline
+A human learning example is that a human student may memorize the area of a retangle with $x$ length and $y$ width, but unless the student may capture the concept of $area = x \cdot y$, this student may not be able to find out the area of a retangle with edge of $x'$ and $y'$ if such $x', y'$ is not in the example represenation.\newline
 
 \noindent\textbf{(ii)}
 
-It is possible the target concept of a task is not contained  in its hypothesis space. If we set the hypothesis space to be big enough to contain every possible hypotheses, so that the target hypothesis is guaranteed to be include; this hypothesis space will also include the concept of simply memorize all your examples. This memerization concept will perform just as well -- if not better -- than your target concept and might became the final concept produced by the program, in this case the program is not learning.
+It is possible the target concept of a task is not contained in its hypothesis space. If we set the hypothesis space to be big enough to contain every possible hypotheses, so that the target hypothesis is guaranteed to be include; this hypothesis space will also include the concept of simply memorize all your examples. This memerization concept will perform just as well -- if not better -- than your target concept and might became the final concept produced by the program, in this case the program is not learning.
 
-A human learning example, still on area of retangle with edge $x$ and $y$ would be if we expose the human to every hypotheses -- $x + y$, $x-y$, $xy$, $f(x, y)$, filling smaller squres, etc -- the hypothsis of simply remember the area of every given example will be in this hypothesis space. Since the performance of this memerization concept is just as good as calculating $xy$ (the target concept) on examples, the human might just do the memorization without any actual learning.\newline
+A human learning example, still on area of retangle with edge $x$ and $y$ would be if we expose the human to every hypotheses -- $x + y$, $x-y$, $xy$, $f(x, y)$, filling smaller squares, etc -- the hypothsis of simply remember the area of every given example will be in this hypothesis space. Since the performance of this memerization concept is just as good as calculating $xy$ (the target concept) on examples, the human might just do the memorization without any actual learning.\newline
 
 \noindent\textbf{(iii)}
 
