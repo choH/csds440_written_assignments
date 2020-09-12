@@ -38,7 +38,7 @@
 
 \title{\textbf{CSDS 440: Assignment 2}}
 
-\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang Tie, \ilcode{mxt497}}
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang TIE, \ilcode{mxt497}}
 \date{Due on 09/18/2020, submitted \textcolor{blue}{early} on 09/11/2020}
 \maketitle
 
@@ -57,7 +57,7 @@ Since each Boolean attribute may have two outcomes, $n$ Boolean attributes may l
 
 In pervious question we have showed if we put all examples, each with $n$ Boolean attributes, into a table, such table will have $2^n$ rows.
 
-Known that we may assign two possible class labels ($1$ or $0$) for each example, and there are $2^n$ examples waiting for assignment. The question is equivalent of asking how many ways shall we fill a $2^n$ space number with $1$s and $0$s, and the answer would be $2^{2^n}$.
+Known that we may assign two possible class labels ($1$ or $0$) for each example, and there are $2^n$ examples waiting for assignment. The question is equivalent to asking how many ways shall we fill a $2^n$ place array with $1$s and $0$s, and the answer would be $2^{2^n}$.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -87,7 +87,7 @@ With the new weight information, we have:
     &= - \frac{144}{256} \log_2(\frac{144}{256}) - \frac{112}{256} \log_2(\frac{112}{256}) \approx 0.9887
 \end{align*}
 
-Now for each attribute:
+\noindent Now for each attribute:
 
 \begin{align*}
     IG(A_1) &= H(Y) - H(Y | A_1) \\
@@ -97,7 +97,7 @@ Now for each attribute:
     &\approx 0.0343
 \end{align*}
 
-Similarily:
+\noindent Similarily:
 
 \begin{align*}
     IG(A_2) &= 0.9887 - [\frac{192}{256} (-\frac{120}{192} \log_2(\frac{120}{192}) -\frac{72}{192} \log_2(\frac{72}{192}))  + \frac{64}{256} (-\frac{24}{64} \log_2 (\frac{24}{64}) - \frac{40}{64} \log_2 \frac{40}{64} )] \\
@@ -117,7 +117,7 @@ Since we have $IG(A_1) \approx IG(A_2) \approx IG(A_3) \approx 0.0343$ and $IG(A
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 9}
 
-In \textit{Problem 7}, every attribute has the equal amount of $T$s and $F$s and also equal amount of $0$ and $1$ labels corresponding to their $T$ and $F$ groups. Thus every attribute will have their $IG = 0$ and ID3 will stop.
+In \textit{Problem 7}, every attribute has the equal amount of $T$s and $F$s and also equal amount of $0$ and $1$ labels corresponding to their $T$ and $F$ groups. Thus every attribute will have their $IG = 0$ and ID3 will stop.\newline
 
 However, in \textit{Problem 8}, with the introduced weight, we have $IG(A_1) \approx IG(A_2) \approx IG(A_3) \approx 0.0343$ and $IG(A_4) \approx 0$. Therefore the algorithm may first split on any attribute among $A_1$, $A_2$, or $A_3$ and form a decision tree.
 
