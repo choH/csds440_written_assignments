@@ -64,15 +64,62 @@ Known that we may assign two possible class labels ($1$ or $0$) for each example
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 7}
 
+For the entropy of table we have $H(Y) = -\frac{8}{16} \log_2( \frac{8}{16}) -\frac{8}{16} \log_2( \frac{8}{16}) = 1$
+
+Known that $IG(A) = H(Y) - H(Y \mid A)$, and $H(Y \mid A) = P(A = T)H(Y \mid A = T) + P(A = F)H(Y \mid A = F)$. Since every attribute has the equal amount of $T$s and $F$s and also equal amount of $0$ and $1$ label output corresponding to their $T$ and $F$ groups, every attribute will have the following information gain:
+
+\begin{align*}
+    IG(A_i) &= H(Y) - H(Y \mid A_i) = H(Y) - [P(A_i = T)H(Y \mid A_i = T) + P(A_i = F)H(Y \mid A_i = F)] \\
+    &= 1 - [\underbrace{\frac{8}{16}}_{P(A_i = T)}(\underbrace{-\frac{4}{8} \log_2(\frac{4}{8})}_{A_i = T \ and \ Y = 1}  \underbrace{-\frac{4}{8} \log_2(\frac{4}{8}))}_{{A_i = T \ and \ Y = 0}} \ + \ \underbrace{\frac{8}{16}}_{P(A_i = F)}(\underbrace{-\frac{4}{8} \log_2(\frac{4}{8})}_{A_i = F \ and \ Y = 1}  \underbrace{-\frac{4}{8} \log_2(\frac{4}{8}))}_{{A_i = F \ and \ Y = 0}}= 0
+\end{align*}
+
+Since every attribute has an $IG$ of $0$, and known that ID3 will stop if there is no infrmation gain. The algorithm will have no split at all.
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 8}
 
+With the new weight information, we have:
+
+\begin{align*}
+    H(Y) &= - \frac{(3 + 9 + 3 +9 +3 +9 + 27 + 81)}{256}\log_2(\frac{(3 + 9 + 3 +9 +3 +9 + 27 + 81)}{256}) \\ &\ \ \ \  - \frac{(1 + 3 + 9 + 27 + 9 + 27 + 9 + 27)}{256}\log_2(\frac{(1 + 3 + 9 + 27 + 9 + 27 + 9 + 27)}{256}) \\
+    &= - \frac{144}{256} \log_2(\frac{144}{256}) - \frac{112}{256} \log_2(\frac{112}{256}) \approx 0.9887
+\end{align*}
+
+Now for each attribute:
+
+\begin{align*}
+    IG(A_1) &= H(Y) - H(Y | A_1) \\
+    &= 0.9887 - [ \frac{(3 + 9 + 9 + 27 + 9 + 27 + 27 + 81)}{256}  \ (- \frac{(3 + 9  + 27 + 81)}{192} \log_2 \frac{(3 + 9  + 27 + 81)}{192} \\ &\ \ \ \ - \frac{(9 + 27  + 9 + 27)}{192} \log_2 \frac{(3 + 9  + 27 + 81)}{192}) \  \ \\ &\ \ \ \ +
+    \frac{(1 + 3 + 3 + 9 + 3 + 9 + 9 + 27)}{256}  \ (- \frac{(3 + 9  + 3 + 9)}{64} \log_2 \frac{(3 + 9  + 3 + 9)}{64} \\ &\ \ \ \ - \frac{(1 + 3  + 9 + 27)}{64} \log_2 \frac{(1 + 3  + 9 + 27)}{64})] \\
+    &= 0.9887 - [\frac{192}{256} (-\frac{120}{192} \log_2(\frac{120}{192}) -\frac{72}{192} \log_2(\frac{72}{192}))  + \frac{64}{256} (-\frac{24}{64} \log_2 (\frac{24}{64}) - \frac{40}{64} \log_2 \frac{40}{64} )] \\
+    &\approx 0.0343
+\end{align*}
+
+Similarily:
+
+\begin{align*}
+    IG(A_2) &= 0.9887 - [\frac{192}{256} (-\frac{120}{192} \log_2(\frac{120}{192}) -\frac{72}{192} \log_2(\frac{72}{192}))  + \frac{64}{256} (-\frac{24}{64} \log_2 (\frac{24}{64}) - \frac{40}{64} \log_2 \frac{40}{64} )] \\
+    &\approx 0.0343 \\
+    IG(A_3) &= 0.9887 - [\frac{192}{256} (-\frac{120}{192} \log_2(\frac{120}{192}) -\frac{72}{192} \log_2(\frac{72}{192}))  + \frac{64}{256} (-\frac{24}{64} \log_2 (\frac{24}{64}) - \frac{40}{64} \log_2 \frac{40}{64} )] \\
+    &\approx 0.0343 \\
+    IG(A_4) &= 0.9887 - [\frac{192}{256} (-\frac{108}{192} \log_2(\frac{108}{192}) -\frac{84}{192} \log_2(\frac{84}{192}))  + \frac{64}{256} (-\frac{36}{64} \log_2 (\frac{36}{64}) - \frac{28}{64} \log_2 \frac{28}{64} )] \\
+    &\approx 0 \\
+\end{align*}
+
+Since we have $IG(A_1) \approx IG(A_2) \approx IG(A_3) \approx 0.0343$ and $IG(A_4) \approx 0$. Therefore the algorithm may first split on any attribute among $A_1$, $A_2$, or $A_3$ and form a decision tree.
+
+
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 9}
+
+In \textit{Problem 7}, every attribute has the equal amount of $T$s and $F$s and also equal amount of $0$ and $1$ labels corresponding to their $T$ and $F$ groups. Thus every attribute will have their $IG = 0$ and ID3 will stop.
+
+However, in \textit{Problem 8}, with the introduced weight, we have $IG(A_1) \approx IG(A_2) \approx IG(A_3) \approx 0.0343$ and $IG(A_4) \approx 0$. Therefore the algorithm may first split on any attribute among $A_1$, $A_2$, or $A_3$ and form a decision tree.
 
 
 
