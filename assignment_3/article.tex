@@ -77,6 +77,17 @@ Because ROC graph is ploting $\text{TP Rate} = \frac{TP}{TP + FN}$ against $\tex
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 14}
 
+Let $R$ denotes the examples that are being classfied as \textit{Positive}, and $T$ denotes the true posive cases. We have:
+
+\begin{align*}
+    P(R) &= P(R \mid T)P(T) + P(R \mid T^c) P(T^c) \\
+    &= P(R \mid T)(1 - P(T^c) + P(R \mid T^c) P(T^c) \\
+    &= P(R \mid T) - P(R \mid T)P(T^c)+ P(R \mid T^c) P(T^c) \\
+    &= P(R \mid T) + [P(R \mid T^c) -  P(R \mid T)] \cdot P(T^c) \\
+    P(R) - P(R \mid T) &= [P(R \mid T^c) -  P(R \mid T)] \cdot P(T^c)
+\end{align*}
+
+We know that there must be $P(R) = P(R \mid T)$ as random guessing is an independent variable. We also know we should have $P(T^c) > 0$ for being a meaningful task. Subsituting these into the above equation, we have $0 = P(R \mid T^c) -  P(R \mid T) \Longrightarrow  P(R \mid T^c) = P(R \mid T)$. This implies that the TP Rate is the same as the FP Rate, and the ROC graph for a random gussing classifier will therefore be a diagonal line.
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
