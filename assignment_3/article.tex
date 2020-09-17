@@ -85,9 +85,11 @@ A preference bias is an inductive bias where some hypothesis are preferred over 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 12}
 
-No. This is not a goth methodology due to an effective concept usually takes a reasonably large amount of training to learn. However by having an equal-size training and evaluation sets, the training set is likely not large enough -- or at least not as effective having a larger training set.
+No. This is not a goth methodology due to an effective concept usually takes a reasonably large amount of training to learn. However by having an equal-size training and evaluation sets, the training set is likely not large enough -- or at least not as effective having a larger training set.\newline
 
 Also because of the equal-sized division, the examples in the training set of during an iteration can be very different to another iteration. This inconsistency will increase the difficuty for person \textit{X} to analyse wheather it is the problem on training data or the model itself, should there ever be any undesired/unstable performance measures.
+
+At the same time, some examples might always being divided to the training test during each iterations, so the model will therefore never be able to evaluate its ablity of predicting these examples; and this for sure lower the realiability of the performance measure of the model. In general, a $N$-fold approach will be preferred.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
