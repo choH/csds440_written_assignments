@@ -70,6 +70,7 @@ Also because of the equal-sized division, the examples in the training set of du
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 13}
 
+Because ROC graph is ploting $\text{TP Rate} = \frac{TP}{TP + FN}$ against $\text{FP Rate} = \frac{FP}{FP + TN}$. As we are lowering the classification threshold, more examples will be classfied as \textit{Positive}. This implies there will be more $TP$ and $FP$ (for a typical model) as the threashold being lower -- and since both $TP + FN$ and $FP + TN$ are constant for all time -- we will have a larger numerators on the same denominators. Which will result in an increase on both axises and the statament is therefore proven.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
