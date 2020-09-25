@@ -73,7 +73,16 @@ With the first derivative being a decreasing function, we know the function is c
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 16}
 
+Pick two points, $x_1$ and $x_2$ in $R^n$ where $Ax_1, Ax_2 \geq b$. W.T.S. for any point $x$ between the line of $x_1$ and $x_2$, we have $Ax \geq b$.
 
+\begin{align*}
+    Ax &= A(\lambda x_1 + (1- \lambda)x_2) \\
+    &= \lambda A x_1 + (1- \lambda)A x_2 \\
+    &\geq \lambda b + (1- \lambda)b = \lambdab + b - \lambda b = b \\
+    \Longrightarrow Ax &\geq b
+\end{align*}
+
+As $x$ in above case can be any point from of $\{x \mid Ax \geq b \}$, we have proven the set is convex.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
