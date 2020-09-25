@@ -29,6 +29,7 @@
 \patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
 
 
+
 \makeatletter
 \renewcommand{\@seccntformat}[1]{}
 \makeatother
@@ -78,7 +79,7 @@ Pick two points, $x_1$ and $x_2$ in $R^n$ where $Ax_1, Ax_2 \geq b$. W.T.S. for 
 \begin{align*}
     Ax &= A(\lambda x_1 + (1- \lambda)x_2) \\
     &= \lambda A x_1 + (1- \lambda)A x_2 \\
-    &\geq \lambda b + (1- \lambda)b = \lambdab + b - \lambda b = b \\
+    &\geq \lambda b + (1- \lambda)b = \lambda b + b \lambda b = b \\
     \Longrightarrow Ax &\geq b
 \end{align*}
 
@@ -111,7 +112,38 @@ Thus, by contradiction, the local minimum of a convex function is always the glo
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 18}
 
+For the ease of description, we denotes elements in $A$ as $\begin{pmatrix}
+  x & y \\
+  x & y \\
+  ...
+\end{pmatrix}$. We have the following for $Ax \geq b$:
 
+
+\begin{align*}
+    0x -y &\geq -5 \\
+    -x - y &\geq -9 \\
+    -x + 2y &\geq 0 \\
+    x - y &\geq -1
+\end{align*}
+
+Similarly, we also have $c^T x = -x - 2y$.
+
+\subsection{(a) (b)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{{fig/fig_p18.png}}
+\end{figure}
+
+The area shaded by dark blue is the feasible region, the three $c^Tx$ contours are labelled accordingly.\newline
+
+\noindent\textbf{Yes}. The minimun did go through a vertex of the feasible region at $(4, 5)$.\newline
+
+\noindent It is because to optimize a line, either the oprimized line will ``overlap'' with an edge of the feasible region, or it will intersect an edge / vertex of the feasible region. In the former case, any point on the ``overlapped'' edge is able to provide the optimized solution; and since an edge includes two vertices, the minimum can be on a vertex. In the latter case, the line will always find a direction (along the edge it intersects) to further optimize untill it reaches a vertex, so the minimum will also be on a vertex.
+
+In this particular problem setting, among three contours the ``higher'' one (one with larger $y$-axis intersection value) on graph will have a smaller value. Since $c^T x = -16$ is not in the feasible region, we have $c^T x = -14$ being the minimum.
+
+
+% 0f395a
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
