@@ -89,6 +89,23 @@ As $x$ in above case can be any point from of $\{x \mid Ax \geq b \}$, we have p
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 17}
 
+\begin{proof}
+To prove by contradiction. Assume we have a local minimum $x$ in a convex function $f$ but there is another global minimum $x'$, where $f(x') < f(x)$.
+
+Since $f$ is convex, by Jensen's inequality we must have:
+
+\begin{align*}
+    f(\lambda x + (1 - \lambda)x') &\leq \lambda f(x) + (1 - \lambda)f(x') \\
+    &< \lambda f(x) + (1 - \lambda)f(x) \\
+    &< f(x) \\
+    \text{Let \ } \lambda &= 1 \text{, we will have the below contradiction:} \\
+    f(x) &< f(x)
+\end{align*}
+
+Thus, by contradiction, the local minimum of a convex function is always the global minimum.
+
+\end{proof}
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
