@@ -1,0 +1,96 @@
+
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilcode}{\texttt}
+\usepackage{etoolbox}
+\usepackage{physics}
+\usepackage{xcolor}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+\begin{document}
+
+
+
+\title{\textbf{CSDS 440: Assignment 5}}
+
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang TIE, \ilcode{mxt497}}
+\date{Due on 10/09/2020, submitted \textcolor{blue}{early} on 10/02/2020 \\ Fall 2020, Dr. Ray}
+\maketitle
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 19}
+
+\begin{align*}
+    b^T u &= u^T b \\
+    &\leq u^T \cdot Ax \ \ \text{(Since $Ax \geq b$)}\\
+    c^T X &= x^T c \\
+    &\geq x^T A^T u \ \ \text{(Since $A^u \leq c$)}\\
+    &\geq u^T Ax \\
+    \Longrightarrow \ b^T u &\leq c^T X
+\end{align*}
+
+The statement is therefore proven.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 20}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 21}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 22}
+
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% \section{References}
+% \nocite{*}
+% \raggedright
+% \bibliography{references.bib}
+% \bibliographystyle{plain}
+
+
+\end{document}
