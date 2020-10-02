@@ -23,6 +23,7 @@
 \usepackage{subfig}
 \usepackage{wasysym}
 \newcommand{\ilcode}{\texttt}
+\newcommand{\p}{\partial}
 \usepackage{etoolbox}
 \usepackage{physics}
 \usepackage{xcolor}
@@ -67,6 +68,56 @@ The statement is therefore proven.
 \section{Problem 20}
 
 
+We denote $h(u)$ to be the activation function for $u$ and we do not make assumption of which activation function is used (so we won't have the sigmoid simplication of $\frac{\partial h}{\partial u} = h(u)(1-h(u))$). For traning example $\alpha$, $h(\alpha) = o_\alpha$ (representing the prediction output), and we denotes $y = y_\alpha$ for the output label.
+
+For the ease of understanding, we denote our symbols with respect to the following NN, which use almost identical notation to the one taught in \textit{Lecture 10}.\newline
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{{fig/fig_p20.png}}
+\end{figure}
+
+
+\subsection{Hidden-to-Output}
+
+\begin{align*}
+    \frac{\p L}{\p w_{ji}} &= \frac{\p L}{\p n_j} \frac{\p n_j}{w_{ji}} \\
+    &= \frac{\p L}{\p n_j} \cdot \frac{\p (w_{ji} \cdot x_{ji})}{w_{ji}} \\
+    &= \frac{\p L}{\p n_j} \cdot x_{ji} \\
+    &= \frac{\p L}{\p h(n_j)} \frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+    &= \frac{\p}{\p h(n_j)}(-y \log(h(n_j)) - (1-y) \log(1 - h(n_j))) \ \cdot \frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+    &= (-\frac{-y}{h(n_j)} + \frac{1-y}{1- h(n_j)}) \ \cdot \frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+    &= (\frac{1-y}{1- h(n_j)} -\frac{-y}{h(n_j)})\ \cdot \frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+\end{align*}
+
+Base on the calucation of the output layer, we may tall the backpropagation weight updates for hidden-to-output layer is:
+
+\begin{equation*}
+    \frac{\p L}{\p w_{ji}} = (\frac{1-y}{1- h(n_j)} -\frac{-y}{h(n_j)})\ \cdot \frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji}
+\end{equation*}
+
+\subsection{Input-to-Hidden}
+
+Since $j$ affects the $\hat{y}$ outputs only through $Downstream(j)$, we have:
+
+
+\begin{align*}
+    \frac{\p L}{\p w_{ji}} &= \frac{\p L}{\p n_j} \cdot \frac{\p n_j}{\p w_{ji}} \\
+    &= \frac{\p L}{\p n_j} \cdot \frac{\p (w_{ji} \cdot x_{ji})}{w_{ji}} \\
+    &= \frac{\p L}{\p n_j} \ \cdot x_{ji} \\
+    &= \sum_{k \in Downstream(j)} \frac{\p L}{\p n_k} \cdot \frac{\p n_k}{\p n_j} \ \cdot x_{ji} \\
+    &= \sum_{k \in Downstream(j)} \frac{\p L}{\p n_k} \cdot \frac{\p (w_{kj}h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+    &= \sum_{k \in Downstream(j)} \frac{\p L}{\p n_k} \cdot w_{kj}\frac{\p h(n_j)}{\p n_j} \ \cdot x_{ji} \\
+    &= \frac{\p h(n_j)}{\p n_j} \cdot \sum_{k \in Downstream(j)} \frac{\p L}{\p n_k} \cdot w_{kj} \ \cdot x_{ji} \\
+    &= \frac{\p h(n_j)}{\p n_j} x_{ji}  \cdot \sum_{k \in Downstream(j)} \frac{\p L}{\p w_{kj}} \frac{w_{kj}}{x_{kj}}
+\end{align*}
+
+
+Base on the calucation of the hidden layer, we may tall the backpropagation weight updates for input-to-output layer is:
+
+\begin{equation*}
+    \frac{\p L}{\p w_{ji}} = \frac{\p h(n_j)}{\p n_j} x_{ji}  \cdot \sum_{k \in Downstream(j)} \frac{\p L}{\p w_{kj}} \frac{w_{kj}}{x_{kj}}
+\end{equation*}
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
