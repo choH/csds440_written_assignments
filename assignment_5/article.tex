@@ -154,7 +154,49 @@ We have showed the network is able to produce the correct classification.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 22}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{{fig/fig_p22.png}}
+\end{figure}
 
+
+Assume we have the above ANN of two hidden layers, each with $m$ number of nerons, a common square loss will be:
+
+
+
+
+\begin{align*}
+    L(w) &= \frac{1}{2} \sum_{i = 1}^m (y_i - \hat{y_i})^2 \\
+    &= \frac{1}{2} \sum_{i = 1}^m (y_i - sign(w \cdot x_i))^2
+\end{align*}
+
+For the sake having something differentiable, we drop the $sign()$ function and make it as:
+
+\begin{equation*}
+    L(w) = \frac{1}{2} \sum_{i = 1}^m (y_i - w \cdot x_i)^2
+\end{equation*}
+
+Therefore, for the gradient of $L_2$ and output, we have:
+
+\begin{align*}
+    \frac{\p L_2}{\p w} &= \sum_{i}^{m} (y_i - w \cdot x_i)(-x_i) \\
+    &=\sum_{i}^{m} (w \cdot x_i^2 - x_i \cdot y_i)
+\end{align*}
+
+We furter differentiate it to get the gradient of $L_1$ and $L_2$:
+
+\begin{align*}
+    \frac{\p L_1}{\p w} &= \frac{\p}{\p w} (\sum_{i}^{m} (w \cdot x_i^2 - x_i \cdot y_i)) \\
+    &= \sum_{i}^{m} x_i^2
+\end{align*}
+
+Similiarily, for gradient of input and $L_1$
+
+\begin{equation*}
+    \frac{\p L_{\text{input}}}{\p w} &= \frac{\p}{\p w} \sum_{i}^{m} x_i^2 = 0
+\end{equation*}
+
+Since the gradient is 0, the weight of the input will not be updated. Note this is just a 2-layer ANN, an arbitrary ANN with more layers but without the $sign()$ function might also encounter this problem and make the weight updating mechanism ineffective.
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
