@@ -73,6 +73,29 @@ The statement is therefore proven.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 21}
 
+Note for the following neural network, the weights are noted on the edges and the activation thresholds are noted on the top of each neuron (as for the neuron with threshold $x$ will output $+1$ if the input $\geq x$, and output $-1$ otherwise). Note we omitted $x_2$ as it is simply a duplication of $x_1$, and we can design a network without using the former.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{{fig/fig_p21.png}}
+\end{figure}
+
+Now to trace each example. Note for each neuron, the inequality is the input against the activation threshold and the one in bracket represents the output.
+\begin{table}[H]
+\centering
+    \begin{tabular}{|rr|rrrr|r|}
+        \hline
+        $x_1$ & $x_2$ & $u_1$ & $u_2$ & $u_3$ & $u_4$ & $z$ \\
+        \hline
+        -4 & -4 & $-4<2$ (-1) & $-4< -2$ \ (-1) & $1 + 1 > 1$ \ (1) & $-1 - 1 < 1$ \ (-1) & $-1 + 1 < 1$ \ (-1) \\
+        -1 & -1 & $-1<2$ \ (-1) &$-1> -2$ \ (1)  & $1 - 1 < 1$ \ (-1) & $1 - 1 < 1$ \ (-1) & $1 + 1 > 1$ \ (1) \\
+        1 & 1 &  $1<2$ \ (-1) &  $1>-2$ \ (1)& $1 - 1 < 1$ \ (-1) & $1 - 1 < 1$ \ (-1) & $1 + 1 > 1$ \ (1) \\
+        4 & 4 & $4>2$ (1) & $4>-2$ \ (1) & $1 - 1 < 1$ \ (-1) & $1 + 1 > 1$ \ (1) & $1 - 1 < 1$ \ (-1) \\
+        \hline
+    \end{tabular}
+\end{table}
+
+We have showed the network is able to produce the correct classification.
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
