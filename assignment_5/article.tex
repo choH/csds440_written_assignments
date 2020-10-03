@@ -155,6 +155,15 @@ We have showed the network is able to produce the correct classification.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 22}
 
+I asked TA, couple of my classmates, and consulted online resources. It seems there are two ways to answer this question. One is to calculate the gradient between each layer and show that without the $sign()$ function the weight will stop updating, but it does not utilized the hint of decision boundary.\newline
+
+So a conceptual argument can be formed on the idea of if we drop the $sign()$ function, a neuron's activation function will simply be its input -- which is a linear function of all pervious neurons. This suggests the output of the ANN will also be a linear function of the input, as combination of linear function is always linear. Thus the ANN will have a linear decision boundary, which voids the purpose of having a deep network (as we can rewrite the whole network with just a single layer), and such network won't be useful for solving a problem which requires a non-linear decision boundary.\newline
+
+\noindent Below is the gradient calculation approach.
+
+
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.4\linewidth]{{fig/fig_p22.png}}
@@ -162,8 +171,6 @@ We have showed the network is able to produce the correct classification.
 
 
 Assume we have the above ANN of two hidden layers, each with $m$ number of nerons, a common square loss will be:
-
-
 
 
 \begin{align*}
