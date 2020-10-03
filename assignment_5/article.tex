@@ -55,8 +55,9 @@
     b^T u &= u^T b \\
     &\leq u^T \cdot Ax \ \ \text{(Since $Ax \geq b$)}\\
     c^T X &= x^T c \\
-    &\geq x^T A^T u \ \ \text{(Since $A^u \leq c$)}\\
+    &\geq x^T A^T u \ \ \text{(Since $A^T u \leq c$)}\\
     &\geq u^T Ax \\
+    \Rightarrow \ b^T u &\leq u^T Ax \leq c^T X \\
     \Longrightarrow \ b^T u &\leq c^T X
 \end{align*}
 
@@ -74,7 +75,7 @@ For the ease of understanding, we denote our symbols with respect to the followi
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\linewidth]{{fig/fig_p20.png}}
+    \includegraphics[width=0.6\linewidth]{{fig/fig_p20.png}}
 \end{figure}
 
 
@@ -128,10 +129,10 @@ Note for the following neural network, the weights are noted on the edges and th
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.4\linewidth]{{fig/fig_p21.png}}
+    \includegraphics[width=0.6\linewidth]{{fig/fig_p21.png}}
 \end{figure}
 
-Now to trace each example. Note for each neuron, the inequality is the input against the activation threshold and the one in bracket represents the output.
+Now to trace each example. Note for each neuron, the inequality is the input against the activation threshold and the output is the one in bracket.
 \begin{table}[H]
 \centering
     \begin{tabular}{|rr|rrrr|r|}
