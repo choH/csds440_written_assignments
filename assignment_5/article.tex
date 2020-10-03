@@ -120,6 +120,12 @@ Base on the calucation of the hidden layer, we may tall the backpropagation weig
     \frac{\p L}{\p w_{ji}} = \frac{\p h(n_j)}{\p n_j} x_{ji}  \cdot \sum_{k \in Downstream(j)} \frac{\p L}{\p w_{kj}} \frac{w_{kj}}{x_{kj}}
 \end{equation*}
 
+I don't know if it is required (as it is now showed on the slide), but if you'd expect us to show an input-to-hidden equation with loss function plugged in, it will be:
+
+\begin{equation*}
+    \frac{\p L}{\p w_{ji}} = \frac{\p h(n_j)}{\p n_j} x_{ji}  \cdot \sum_{k \in Downstream(j)} (\frac{1-y}{1- h(n_k)} -\frac{-y}{h(n_k)})\ \cdot \frac{\p h(n_k)}{\p n_k} \ \cdot x_{kj} \ \cdot  \frac{w_{kj}}{x_{kj}}
+\end{equation*}
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
