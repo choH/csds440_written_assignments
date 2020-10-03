@@ -201,7 +201,7 @@ We furter differentiate it to get the gradient of $L_1$ and $L_2$:
 Similiarily, for gradient of input and $L_1$
 
 \begin{equation*}
-    \frac{\p L_{\text{input}}}{\p w} &= \frac{\p}{\p w} \sum_{i}^{m} x_i^2 = 0
+    \frac{\p L_{\text{input}}}{\p w} = \frac{\p}{\p w} \sum_{i}^{m} x_i^2 = 0
 \end{equation*}
 
 Since the gradient is 0, the weight of the input will not be updated. Note this is just a 2-layer ANN, an arbitrary ANN with more layers but without the $sign()$ function might also encounter this problem and make the weight updating mechanism ineffective.
