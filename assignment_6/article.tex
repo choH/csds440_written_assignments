@@ -1,0 +1,92 @@
+
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilcode}{\texttt}
+\newcommand{\p}{\partial}
+\usepackage{etoolbox}
+\usepackage{physics}
+\usepackage{xcolor}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+\begin{document}
+
+
+
+\title{\textbf{CSDS 440: Assignment 6}}
+
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang TIE, \ilcode{mxt497}}
+\date{Due on 10/16/2020, submitted \textcolor{blue}{early} on 10/09/2020 \\ Fall 2020, Dr. Ray}
+\maketitle
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 23}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 24}
+
+
+For traditional backpropagation of $n_k$ in $k$-th layer, we have $\frac{\p L}{\p n_k}  = \sum\limits_{k+1 \in \text{Downstream}(n_k)} \frac{\p L}{\p n_{k+1}} \cdot \frac{\p n_{k+1}}{\p n_k}$ assuming there is an edge from $n_k$ to $n_{k+1}$. For the non-feedforward structure the question suggests, $n_k$ will still calculate the above loss, but it will also consider other nodes in the $k$-th layer which it connects to $n_k$. We denotes these nodes as $n_{k_i} = \{n_{k_1}, n_{k_2}, n_{k_3}, ...\}$, where edges like $n_k \to n_{k_i}$ exist. \newline
+
+Since there is no cycle, these $n_{k_i}$ nodes will not connect to any $\text{Downstream}(n_k)$ nodes. So we can just do backpropagation layer by layer and once the above $\sum\limits_{k+1 \in \text{Downstream}(n_k)} \frac{\p L}{\p n_{k+1}} \cdot \frac{\p n_{k+1}}{\p n_k}$ is calculated, we will calculate the loss of $n_{k_i}$ nodes with respect to $n_k$ and add to the loss of $n_k$. Which will give us:
+
+\begin{align*}
+    \frac{\p L}{\p n_k}  &= \sum\limits_{k+1 \in \text{Downstream}(n_k)} \frac{\p L}{\p n_{k+1}} \cdot \frac{\p n_{k+1}}{\p n_k} + \sum\limits_{n_{k_i}} \frac{\p L}{\p n_{k_i}} \cdot \frac{\p n_{k_i}}{\p n_k} \\
+    \Longrightarrow \frac{\p L}{\p w_{(k-1)k}} &= \frac{\p L}{\p n_k} \frac{\p n_j}{w_{(k-1)k}} \\
+    &= \frac{\p L}{\p n_k} \cdot x_{(k-1)k}
+\end{align*}
+
+Assume there is a $n_{k-1} \to n_k$ edge.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 25}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 26}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 27}
+
+
+
+
+
+
+\end{document}
