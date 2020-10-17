@@ -94,10 +94,32 @@ Assume there is a $n_{k-1} \to n_k$ edge.
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 25}
 
+\begin{align*}
+    P(T = i \mid c_1, \dots, c_N) &= \frac{P(c_1, \dots, c_N \mid T = i)\cdot P(T = i)}{\sum\limits_{i \in \{1, 2, 3\}} P(c_1, \dots, c_N \mid T = i) \cdot P(T = i)} \\
+    &= \frac{\prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i) }{\sum\limits_{i \in \{1, 2, 3\}} \big ( \prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i)\big ) }
+\end{align*}
+
+Since no prior information is exposed, we know $P(T = i) = \frac{1}{3}$ for $i \in \{1, 2, 3\}$. Thus we have:
+
+\begin{equation*}
+    P(T = i \mid c_1, \dots c_N) = \frac{\prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot \frac{1}{3} }{\sum\limits_{i \in \{1, 2, 3\}} \big ( \prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot \frac{1}{3} \big ) }
+\end{equation*}
+
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 26}
+
+
+Similar to pervious question, we have:
+
+\begin{align*}
+    P(c_{N+1} = C \mid c_1, \dots, c_N) &= \frac{\sum\limits_{i \in \{1, 2, 3\}} P(c_1, ..., c_N, c_{N+1} = C \mid T = i) }{P(c_1, \dots, c_N)} \\
+    &= \frac{\sum\limits_{i \in \{1, 2, 3\}} P(c_1, ..., c_N \mid T = i) P( c_{N+1} = C \mid T = i) }{P(c_1, \dots, c_N)} \\
+    &= \sum\limits_{i \in \{1, 2, 3\}} P( T = i\mid c_1, ..., c_N) P( c_{N+1} = C \mid T = i)
+\end{align*}
+
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -105,8 +127,10 @@ Assume there is a $n_{k-1} \to n_k$ edge.
 \section{Problem 27}
 
 
+Base on \textit{Problem 25}, we now have $P(T = 1, 2) = 0.1$ and  $P(T = 3) = 0.8$. Now substitute this finding in to the following equation.
 
-
-
+\begin{equation*}
+    P(T = i \mid c_1, \dots, c_N) = \frac{\prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i) }{\sum\limits_{i \in \{1, 2, 3\}} \big ( \prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i)\big ) }
+\end{equation*}
 
 \end{document}
