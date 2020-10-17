@@ -53,7 +53,7 @@
 
 \subsection{(i, ii, iii)}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \minipage{0.32\textwidth}
   \includegraphics[width=\linewidth]{fig/fig_p23_1.png}
   \caption{$w \in [-10, 10]$}
@@ -69,7 +69,7 @@
 \end{figure}
 
 
-By observation we may tell with the weights $w$ decaying, the output graph becomes more ``linear'' which is better againt overfitting.
+By observation we may tell with the weights $w$ decaying, the output graph becomes more ``linear'' which is better againt overfitting. For color reference, we have \textcolor{cyan}{Output = 1} and \textcolor{orange}{Output = 0}.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -106,6 +106,27 @@ Since no prior information is exposed, we know $P(T = i) = \frac{1}{3}$ for $i \
 \end{equation*}
 
 
+
+\begin{figure}[!htb]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p25_1.png}
+  \caption{Box 1}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p25_2.png}
+  \caption{Box 2}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{fig/fig_p25_3.png}
+  \caption{Box 3}
+\endminipage
+\end{figure}
+
+
+In comparision to \textit{Problem 27}. In \textit{Problem 25} we have all boxes having probablity of $\frac{1}{3}$ instead of $\{0.1, 0.1, 0.8\}$ in \textit{Problem 27}. Reflecting the setting of the questions.
+
+Also it is observable that as more candies were picked, which box we are picking from becomes clear; reflecting the change of decision boundary. Also, boxes with better similiarity (in terms of candy distribution) with the box we picking from will maintain a higher probablity for a longer period time comparing to boxes lack of similiarity to the box we picking from. e.g. When we are picking from Box 1, Box 2 has a higher probablity than Box 3 for a longer period of time before it goes to 0. This is because Box 1 and Box 2 have similar distribution, while Box 3 has the almost opposite distribution to Box 1.
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -120,6 +141,25 @@ Similar to pervious question, we have:
     &= \sum\limits_{i \in \{1, 2, 3\}} P( T = i\mid c_1, ..., c_N) P( c_{N+1} = C \mid T = i)
 \end{align*}
 
+\begin{figure}[H]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p26_1.png}
+  \caption{Box 1}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p26_2.png}
+  \caption{Box 2}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{fig/fig_p26_3.png}
+  \caption{Box 3}
+\endminipage
+\end{figure}
+
+First it is observable that boxes with more $C$ inside has a higher probablity, and every graph starts with the probablity that representing their distribution, reflecting the setting of the problem.
+
+As $N$ is growing, the probablity changes more and more suddenly. This is because candies picked at a later time will have more impact on the probablity -- e.g. the $N+1$ round will either make the probablity be $1$ or $0$ depending on if there is any $C$ left after the $N$-th pick.
+
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -132,5 +172,25 @@ Base on \textit{Problem 25}, we now have $P(T = 1, 2) = 0.1$ and  $P(T = 3) = 0.
 \begin{equation*}
     P(T = i \mid c_1, \dots, c_N) = \frac{\prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i) }{\sum\limits_{i \in \{1, 2, 3\}} \big ( \prod\limits_{j = 1}^{N} P(c_j \mid T = i) \cdot P(T = i)\big ) }
 \end{equation*}
+
+
+\begin{figure}[H]
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p27_1.png}
+  \caption{Box 1}
+\endminipage\hfill
+\minipage{0.32\textwidth}
+  \includegraphics[width=\linewidth]{fig/fig_p27_2.png}
+  \caption{Box 2}
+\endminipage\hfill
+\minipage{0.32\textwidth}%
+  \includegraphics[width=\linewidth]{fig/fig_p27_3.png}
+  \caption{Box 3}
+\endminipage
+\end{figure}
+
+In comparision to \textit{Problem 25}. In \textit{Problem 27} we have each box having an initial probablity of $\{0.1, 0.1, 0.8\}$ instead of $\frac{1}{3}$ in \textit{Problem 25}. Reflecting the setting of the questions.
+
+Also it is observable that as more candies were picked, which box we are picking from becomes clear; reflecting the change of decision boundary. Also, boxes with better similiarity (in terms of candy distribution) with the box we picking from will maintain a higher probablity for a longer period time comparing to boxes lack of similiarity to the box we picking from. e.g. When we are picking from Box 1, Box 2 has a higher probablity than Box 3 for a longer period of time before it goes to 0. This is because Box 1 and Box 2 have similar distribution, while Box 3 has the almost opposite distribution to Box 1.
 
 \end{document}
