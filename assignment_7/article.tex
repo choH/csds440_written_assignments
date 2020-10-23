@@ -24,6 +24,7 @@
 \usepackage{wasysym}
 \newcommand{\ilcode}{\texttt}
 \newcommand{\p}{\partial}
+\newcommand{\vphi}{\varphi}
 \usepackage{etoolbox}
 \usepackage{physics}
 \usepackage{xcolor}
@@ -64,7 +65,7 @@ We try to show that the new $K = aK_1 + bK_2$ is a valid kernel as it compliants
     &= K(y, x)
 \end{align*}
 
-So $K$ is symmetry.
+So $K$ is symmetry. Now suppose $\forall v \neq 0$, we have:
 
 \begin{align*}
     v^T \cdot K v &= v^T (aK_1 + bK_2)v \\
@@ -78,6 +79,24 @@ So $K$ is also PSD. We may say $K$ is a valid kernel as both of the Mercer's con
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 30}
+
+For $K_1$ to be a valid kernel, we must have $K_1(x, y) = \vphi_1(x) \vphi_1(y)$ where $\phi$ is a non-linear mapping of its input. Due to the same principle, we also have $K_2(x, y) = \vphi_2(x) \vphi_2(y)$. Which gives us:
+
+\begin{align*}
+    K(x, y) &= a K_1(x, y) K_2(x, y) \\
+    &= a( \vphi_1(x) \vphi_1(y) \cdot  \vphi_2(x) \vphi_2(y) \\
+    &= a[(\sum_{i} \vphi_{1i}(x) \vphi_{1i}(y) ) \cdot (\sum_{j} \vphi_{2j}(x) \vphi_{2j}(y))] \\
+    &= a \sum_{i} \sum_{j} \vphi_{1i}(x) \vphi_{1i}(y) \vphi_{2j}(x) \vphi_{2j}(y) \\
+    &= \sum_{i} \sum_{j} (\sqrt{a} \  \vphi_{1i}(x) \vphi_{2j}(x) ) \cdot (\sqrt{a} \  \vphi_{1i}(y)\vphi_{2j}(y)) \\
+    &= \vphi(x)\vphi(y)
+        \begin{cases}
+        \vphi(x) = \sqrt{a} \  \vphi_{1i}(x) \vphi_{2j}(x) \\
+        \vphi(y) = \sqrt{a} \  \vphi_{1i}(y)\vphi_{2j}(y)
+        \end{cases}
+\end{align*}
+
+As the above $\vphi$ is created upon multiplying a constant $\sqrt{a}$ with non-linear mapping $\vphi_1$ and $\vphi_2$, it is also a non-linear mapping; and $K$ is therefore a valid kernel.
+
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
