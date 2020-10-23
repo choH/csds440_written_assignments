@@ -1,0 +1,97 @@
+
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilcode}{\texttt}
+\newcommand{\p}{\partial}
+\usepackage{etoolbox}
+\usepackage{physics}
+\usepackage{xcolor}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+\begin{document}
+
+
+
+\title{\textbf{CSDS 440: Assignment 7}}
+
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang TIE, \ilcode{mxt497}}
+\date{Due on 10/16/2020, submitted \textcolor{blue}{early} on 10/09/2020 \\ Fall 2020, Dr. Ray}
+\maketitle
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 28}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 29}
+
+We try to show that the new $K = aK_1 + bK_2$ is a valid kernel as it compliants to the Mercer's conditions.
+
+\begin{align*}
+    K(x, y) &= aK_1(x, y) + bK_2(x, y) \\
+    &= aK_1(y, x) + bK_2(y, x) \ \ \ \text{as $K_1$ and $K_2$ are valid kernels.} \\
+    &= K(y, x)
+\end{align*}
+
+So $K$ is symmetry.
+
+\begin{align*}
+    v^T \cdot K v &= v^T (aK_1 + bK_2)v \\
+    &= a\underbrace{(v^T K_1 v)}_{\geq 0} + b\underbrace{v(v^T K_2 v)}_{\geq 0}  \\
+    &\geq 0
+\end{align*}
+
+So $K$ is also PSD. We may say $K$ is a valid kernel as both of the Mercer's conditions are met.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 30}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 31}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 32}
+
+
+
+
+
+
+\end{document}
