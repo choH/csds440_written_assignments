@@ -85,9 +85,9 @@ For $K_1$ to be a valid kernel, we must have $K_1(x, y) = \vphi_1(x) \vphi_1(y)$
 \begin{align*}
     K(x, y) &= a K_1(x, y) K_2(x, y) \\
     &= a( \vphi_1(x) \vphi_1(y) \cdot  \vphi_2(x) \vphi_2(y) \\
-    &= a[(\sum_{i} \vphi_{1i}(x) \vphi_{1i}(y) ) \cdot (\sum_{j} \vphi_{2j}(x) \vphi_{2j}(y))] \\
-    &= a \sum_{i} \sum_{j} \vphi_{1i}(x) \vphi_{1i}(y) \vphi_{2j}(x) \vphi_{2j}(y) \\
-    &= \sum_{i} \sum_{j} (\sqrt{a} \  \vphi_{1i}(x) \vphi_{2j}(x) ) \cdot (\sqrt{a} \  \vphi_{1i}(y)\vphi_{2j}(y)) \\
+    &= a[(\sum_{i=1}^{n} \vphi_{1i}(x) \vphi_{1i}(y) ) \cdot (\sum_{j=1}^{n} \vphi_{2j}(x) \vphi_{2j}(y))] \\
+    &= a \sum_{i=1}^{n} \sum_{j=1}^{n} \vphi_{1i}(x) \vphi_{1i}(y) \vphi_{2j}(x) \vphi_{2j}(y) \\
+    &= \sum_{i=1}^{n} \sum_{j=1}^{n} (\sqrt{a} \  \vphi_{1i}(x) \vphi_{2j}(x) ) \cdot (\sqrt{a} \  \vphi_{1i}(y)\vphi_{2j}(y)) \\
     &= \vphi(x)\vphi(y)
         \begin{cases}
         \vphi(x) = \sqrt{a} \  \vphi_{1i}(x) \vphi_{2j}(x) \\
@@ -106,9 +106,9 @@ As the above $\vphi$ is created upon multiplying a constant $\sqrt{a}$ with non-
 \begin{align*}
     K(x, y) &= (x \cdot y + c)^3 \\
     &= (xy)^3 + 3(xy)^2 c + 3(xy)c^2 + c^3 \\
-    &= \sum_i \sum_j \sum_k (x_i y_i)(x_j y_j)(x_k y_k) + 3c \sum_i \sum_j (x_i y_i)(x_j y_j) + 3c^2 \sum_i \sum_j (x_i y_i)(x_j y_j) + c^3 \\
-    &=  \sum_i \sum_j \sum_k (x_i x_j x_k)(y_i y_j y_k) + \sum_i \sum_j (x_i x_j \cdot \sqrt{3c})(y_i y_j \cdot \sqrt{3c}) \\
-    &\ \ \ \  + \sum_i (x_i \cdot c\sqrt{3})(y_i \cdot c\sqrt{3})+ \sqrt{c^3}\sqrt{c^3} \\
+    &= \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{k=1}^{n} (x_i y_i)(x_j y_j)(x_k y_k) + 3c \sum_{i=1}^{n} \sum_{j=1}^{n} (x_i y_i)(x_j y_j) + 3c^2 \sum_{i=1}^{n} \sum_{j=1}^{n} (x_i y_i)(x_j y_j) + c^3 \\
+    &=  \sum_{i=1}^{n} \sum_{j=1}^{n} \sum_{k=1}^{n} (x_i x_j x_k)(y_i y_j y_k) + \sum_{i=1}^{n} \sum_{j=1}^{n} (x_i x_j \cdot \sqrt{3c})(y_i y_j \cdot \sqrt{3c}) \\
+    &\ \ \ \  + \sum_{i=1}^{n} (x_i \cdot c\sqrt{3})(y_i \cdot c\sqrt{3})+ \sqrt{c^3}\sqrt{c^3} \\
     &= \vphi(x)\vphi(y)
 \end{align*}
 
