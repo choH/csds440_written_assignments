@@ -52,6 +52,23 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 28}
 
+
+Rewrite the $Ax \geq b$ to $-(Ax - b) \leq 0$ of $\min_x c^T x$. The largrangian for primal will be $\ell(x, u) = c^Tx - u^T (Ax - b)$. Then
+
+\begin{align*}
+    \nabla \ell(x, u) &= \nabla (c^Tx - u^T (Ax - b)) = 0\\
+    &= c^T - u^TA  = 0 \\
+    \Longrightarrow& c = A^T u
+\end{align*}
+
+Now for the dual $\max_{u: u \geq 0} D(u) - b^T A$. $\nabla \ell(x, u) \geq 0$ suggests the dual is stilling moving towards the maximum direction of $ b^T A$. So we have obtained the asked $\max b^T A \ \ s.t. \  A^T u \leq c, u \geq 0$.
+
+
+
+
+
+
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
