@@ -127,9 +127,21 @@ which is a non-linear mapping of input $a$. So we have showed $K(x, y) = \vphi(x
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 32}
 
+First it is clear that $K (x, y) = K(y, x)$ as $(xy + c)^3 = (yx + c)^3$, so $K$ is symmetric.\newline
 
+\noindent Now to show that $K$ is also PSD, we need that for $K: \mathbb{R} \times \mathbb{R} \rightarrow \mathbb{R}$, $K$ is valid for all $\{x^{(1)}, \dots, x^{(m)} \}$. With such information on $x$ we may form the equality this way:
 
+\begin{align*}
+    v^T K v &= \sum_{i=1}^{m} \sum_{j=1}^{m} v_i v_j K(x^{(i)} x^{(j)}) \\
+    &= \sum_{i=1}^{m} \sum_{j=1}^{m} v_i v_j(x^{(i)} x^{(j)} + c)^3 \\
+    &= \sum_{i=1}^{m} \sum_{j=1}^{m} v_i v_j(y^{(i)} y^{(j)} )^3 \ \ \ \ \text{absorb $+c$ to $x$ and make $y$} \\
+    &= \sum_{i=1}^{m} \sum_{j=1}^{m} v_i v_j (\sum_{a = 1}^{n} y_{a}^{(i)} y_{a}^{(j)}) \cdot (\sum_{b = 1}^{n} y_{b}^{(i)} y_{b}^{(j)}) \cdot (\sum_{c = 1}^{n} y_{c}^{(i)} y_{c}^{(j)}) \\
+    &= \sum_{i=1}^{m} \sum_{j=1}^{m} v_i v_j \sum_{a = 1}^{n} \sum_{b = 1}^{n} \sum_{c = 1}^{n} (y_{a}^{(i)} y_{b}^{(i)} y_{c}^{(i)}) (y_{a}^{(j)} y_{b}^{(j)} y_{c}^{(j)}) \\
+    &= \sum_{a = 1}^{n} \sum_{b = 1}^{n} \sum_{c = 1}^{n} \ \sum_{i=1}^{m} v_i (y_{a}^{(i)} y_{b}^{(i)} y_{c}^{(i)}) \ \ \sum_{j=1}^{m} v_j (y_{a}^{(j)} y_{b}^{(j)} y_{c}^{(j)}) \\
+    &= \sum_{a = 1}^{n} \sum_{b = 1}^{n} \sum_{c = 1}^{n} \big(\sum_{i=1}^{m} v_i (y_{a}^{(i)} y_{b}^{(i)} y_{c}^{(i)})\big)^2
+\end{align*}
 
+Since whole equation is inside a square, $K$ is PSD. And combined with the above finding of $K$ being symmetric, $K$ is a valid kernel.
 
 
 \end{document}
