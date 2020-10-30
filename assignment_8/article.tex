@@ -1,0 +1,122 @@
+\documentclass[12pt]{article}
+\usepackage{times}
+\usepackage{setspace}
+\setstretch{1.5}
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{bm}
+\usepackage[hang, flushmargin]{footmisc}
+\usepackage[colorlinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{footnotebackref}
+\usepackage{url}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+\usepackage{inconsolata}
+\usepackage[papersize={8.5in,11in}, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{esint}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{wasysym}
+\newcommand{\ilcode}{\texttt}
+\newcommand{\p}{\partial}
+\newcommand{\vphi}{\varphi}
+\usepackage{etoolbox}
+\usepackage{physics}
+\usepackage{xcolor}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+\begin{document}
+
+
+
+\title{\textbf{CSDS 440: Assignment 8}}
+
+\author{Shaochen (Henry) ZHONG, \ilcode{sxz517} \\ Mingyang TIE, \ilcode{mxt497}}
+\date{Due and submitted on 10/30/2020 \\ Fall 2020, Dr. Ray}
+\maketitle
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 33}
+
+The decision surface boundary is defined as $wx + b = 0$. When we modify two constants $c1$ and $c2$ that define the plus plane as $wx + b = c1$ where $c1 > 0$ and the minus plane as $wx + b = c2$ where $c2 < 0$. When $|c1| \neq |c2|$, the	decision surface must be closer to either the plus or minus planes. If $|c1| > |c2|$, The decision surface boundary is closer to minus planes, because when $|c1| > |c2|$, $c1 + c2 > 0$, so $wx + b > 0$. If $|c1| < |c2|$, we can know $c1 + c2 < 0$, therefore the decision surface boundary is closer to plus planes, because $wx + b < 0$. If $|c1| = |c2|$, $wx + b = 0$, it means that the resulting decision surface is halfway between plus and minus plane, which is the general SVM case. \newline
+When we choose the decision surface boundary, it is really depend on the dataset we have.  For example, if the distribution of the dataset we choose show that the negative class has less predictable data, we need to let the decision surface boundary to be closer the plus plane.
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 34}
+Assume the maximum margin classifer would be $wx + b \geq 1$ and $wx + b \leq -1$. Let two support vector $x1$ is positive, $x2$ is negative. So The maximum margin should be the projection of $x2 - x1$ onto the normal vector. Let the margin is d.
+
+\begin{align*}
+		d &= \frac{w(x2 - x1)}{||w||} \\
+		&= \frac{(1 - b)- (-1 - b)}{||w||} \\
+		&= \frac{2}{||w||}
+\end{align*}
+Thus according to the function, the margin of classification in an $SVM(w,b)$ is independent of $b$.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 35}
+According to the definition we can get such equation:the 95% confidence
+intervals can be expressed:\newline
+$[(e_{A} - 1.96 * \sigma_{A}), (e_{A} + 1.96 * \sigma_{A}) ]$\newline
+in the expression ,we can find these definitons :\newline
+$e_{A}$: means the average of all samples, which can be calculate by $\frac{n_{1} + n_{2} + n_{3} + ... + n_{k}}{k}$, where $n_{k}$ means a sample.\newline
+$\sigma_{A}$: means the standard devation of the samples, which can be calculate by $\sqrt{\frac{e_{A}(1 - e_{A})}{k}}$ where $k$ is the the total number of samples, $e_{A}$ is the average of all samples.\newline
+So according to the problem we should find enough big samples to sure the equation: $e_{A} - e_{B} = 0.1$ is proven ,we can get the inequality is true:\newline
+$(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B})$\newline
+So we can change the inequality:\newline
+		\begin{align*}
+			(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B}) &= 1.96(\sigma_{B} - \sigma_{A}) < e_{A} - e_{B} \\
+			&= 1.96(\sqrt{\frac{e_{B}(1 - e_{B})}{k}}+ \sqrt{\frac{e_{A}(1 - e_{A})}{k}}) < e_{A} - e_{B} \\
+		\end{align*}
+by the transformation we can get the relationship between $(e_{A} , e_{B} )$ and $k$:\newline
+$k > (1.96(\sqrt{e_{B}(1 - e_{B})} + \sqrt{e_{A}(1 - e_{A})}))^2$\newline
+so according to the result ,we can think if the relationship between $(e_{A},e_{B})$ and $k$ is true, difference in error rates of $A$ and $B$ at the $95\%$ confidence level can be
+proven.
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\section{Problem 36}
+According to the problem ,we can easily assume Professors Bob‘s experiment result is $[ x1 , x2 ]$ with C\% confidence intervals after N times independent experiment. As the same, we can get Professors Nan’s experiment result is $[ x3 , x4 ]$ with C\% confidence intervals after N times independent experiment. So based on the relationships . According to the definition of confidence intervals:\newline
+$[(e_{A} - k * \sigma_{A}), (e_{A} + k * \sigma_{A}) ]$ where $k$ is changed by the C\% confidence.\newline
+So we can easily get the following two Professors total times with error experiment results:\newline
+Professors Bob: $E1: N * 0.5(x1 + x2)$ and Professors Nan: $E2: N * 0.5(x3 + x4)$\newline
+Based on the independent experiment ,we can add the different experiment results to replace the new experiment results, we can think the Professor Scoop’s experiment results are:\newline
+Total times experiment results: $2N$\newline
+Total times with error experiment results: $E1 + E2$\newline
+Based on this results we can calculate the results of Professor Scoop:\newline
+$e = (E1 + E2) / 2N$ and $\sigma^2 = e(1 - e) / 2N$ and $\sigma = \sqrt{e(1 - e) / 2N}$\newline
+So with the C\% confidence, the confidence interval can be expressed:\newline
+$[(e - k\sigma), (e+k\sigma)]$\newline
+Therefore $[(e - k\sigma), (e+k\sigma)]$ is the best confidence interval that Professor Scoop could report that would be consistent with Profs. Bob and Nan’s findings.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% \section{References}
+% \nocite{*}
+% \raggedright
+% \bibliography{references.bib}
+% \bibliographystyle{plain}
+
+
+\end{document}
