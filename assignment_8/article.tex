@@ -51,8 +51,16 @@
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 33}
 
-The decision surface boundary is defined as $wx + b = 0$. When we modify two constants $c1$ and $c2$ that define the plus plane as $wx + b = c1$ where $c1 > 0$ and the minus plane as $wx + b = c2$ where $c2 < 0$. When $|c1| \neq |c2|$, the	decision surface must be closer to either the plus or minus planes. If $|c1| > |c2|$, The decision surface boundary is closer to minus planes, because when $|c1| > |c2|$, $c1 + c2 > 0$, so $wx + b > 0$. If $|c1| < |c2|$, we can know $c1 + c2 < 0$, therefore the decision surface boundary is closer to plus planes, because $wx + b < 0$. If $|c1| = |c2|$, $wx + b = 0$, it means that the resulting decision surface is halfway between plus and minus plane, which is the general SVM case. \newline
-When we choose the decision surface boundary, it is really depend on the dataset we have.  For example, if the distribution of the dataset we choose show that the negative class has less predictable data, we need to let the decision surface boundary to be closer the plus plane.
+The decision surface boundary is defined as $wx + b = 0$. When we modify two constants $c1$ and $c2$ that define the plus plane as $wx + b = c1$ where $c1 > 0$ and the minus plane as $wx + b = c2$ where $c2 < 0$.
+
+
+When $|c1| \neq |c2|$, the decision surface will be closer to either the plus or minus planes. If $|c1| > |c2|$, the decision surface boundary is closer to minus planes, because when $|c1| > |c2|$, $c1 + c2 > 0$, so $wx + b > 0$. If $|c1| < |c2|$, we can know $c1 + c2 < 0$, therefore the decision surface boundary is closer to plus planes, because $wx + b < 0$. If $|c1| = |c2|$, $wx + b = 0$, it means the resulting decision surface is halfway between plus and minus plane, which is the general SVM case. \newline
+
+When choosing the decision surface boundary, the preference it is really depending on the dataset we have or the task we are doing. For example, if the distribution of the dataset we choose show that the negative class has less predictable data, we need to let the decision surface boundary to be closer the plus plane so that more ``redundency'' is left for negative-labeled outputs.
+
+However, if the purposed task is to identify fire in building, a decision boundary which is closer to minus plane will be preferred as it more examples will be classifed as positive -- which is a preferred bias in this task as the cost of having a couple more false positive is much more tolerable than having more false negative.
+
+If the task and dataset is generally neutral, then we may always redefine the decision boundary to be $wx + b = \frac{1}{2}(c_1 + c_2)$ to have an equal distance toward both the plus and minus plane.
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
