@@ -80,23 +80,37 @@ Thus according to the function, the margin of classification in an $SVM(w,b)$ is
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 35}
-According to the definition we can get such equation:the 95% confidence
-intervals can be expressed:\newline
-$[(e_{A} - 1.96 * \sigma_{A}), (e_{A} + 1.96 * \sigma_{A}) ]$\newline
-in the expression ,we can find these definitons :\newline
-$e_{A}$: means the average of all samples, which can be calculate by $\frac{n_{1} + n_{2} + n_{3} + ... + n_{k}}{k}$, where $n_{k}$ means a sample.\newline
-$\sigma_{A}$: means the standard devation of the samples, which can be calculate by $\sqrt{\frac{e_{A}(1 - e_{A})}{k}}$ where $k$ is the the total number of samples, $e_{A}$ is the average of all samples.\newline
-So according to the problem we should find enough big samples to sure the equation: $e_{A} - e_{B} = 0.1$ is proven ,we can get the inequality is true:\newline
-$(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B})$\newline
-So we can change the inequality:\newline
-		\begin{align*}
-			(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B}) &= 1.96(\sigma_{B} - \sigma_{A}) < e_{A} - e_{B} \\
-			&= 1.96(\sqrt{\frac{e_{B}(1 - e_{B})}{k}}+ \sqrt{\frac{e_{A}(1 - e_{A})}{k}}) < e_{A} - e_{B} \\
-		\end{align*}
-by the transformation we can get the relationship between $(e_{A} , e_{B} )$ and $k$:\newline
-$k > (1.96(\sqrt{e_{B}(1 - e_{B})} + \sqrt{e_{A}(1 - e_{A})}))^2$\newline
-so according to the result ,we can think if the relationship between $(e_{A},e_{B})$ and $k$ is true, difference in error rates of $A$ and $B$ at the $95\%$ confidence level can be
-proven.
+% According to the definition we can get such equation:the 95% confidence
+% intervals can be expressed:\newline
+% $[(e_{A} - 1.96 * \sigma_{A}), (e_{A} + 1.96 * \sigma_{A}) ]$\newline
+% in the expression ,we can find these definitons :\newline
+% $e_{A}$: means the average of all samples, which can be calculate by $\frac{n_{1} + n_{2} + n_{3} + ... + n_{k}}{k}$, where $n_{k}$ means a sample.\newline
+% $\sigma_{A}$: means the standard devation of the samples, which can be calculate by $\sqrt{\frac{e_{A}(1 - e_{A})}{k}}$ where $k$ is the the total number of samples, $e_{A}$ is the average of all samples.\newline
+% So according to the problem we should find enough big samples to sure the equation: $e_{A} - e_{B} = 0.1$ is proven ,we can get the inequality is true:\newline
+% $(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B})$\newline
+% So we can change the inequality:\newline
+% 		\begin{align*}
+% 			(e_{A} - 1.96 * \sigma_{A}) > (e_{B} + 1.96 * \sigma_{B}) &= 1.96(\sigma_{B} - \sigma_{A}) < e_{A} - e_{B} \\
+% 			&= 1.96(\sqrt{\frac{e_{B}(1 - e_{B})}{k}}+ \sqrt{\frac{e_{A}(1 - e_{A})}{k}}) < e_{A} - e_{B} \\
+% 		\end{align*}
+% by the transformation we can get the relationship between $(e_{A} , e_{B} )$ and $k$:\newline
+% $k > (1.96(\sqrt{e_{B}(1 - e_{B})} + \sqrt{e_{A}(1 - e_{A})}))^2$\newline
+% so according to the result ,we can think if the relationship between $(e_{A},e_{B})$ and $k$ is true, difference in error rates of $A$ and $B$ at the $95\%$ confidence level can be
+% proven.
+
+
+We denotes $F = e_A - e_B$ to represent the difference between the error rate of the two classifers. We know that $E(F) = e_1 - e_B$ and the variance will be $V(F) = \frac{e_A(1-e_A) + e_B(1-e_B)}{n}$ according to the property of binomial distribution.
+
+As we may model our calculation as a Gaussian distribution, a $95\%$ CI is around $1.96 \sigma$. We want to make 0 will not in this interval, thus $0.1 -1.96 \sigma> 0 \Longrightarrow 0.1 > 1.96 \sigma$. Now by substitute the $V(F)$ in, we have:
+
+\begin{align*}
+    0.1 &> 1.96 \frac{e_A(1-e_A) + e_B(1-e_B)}{n} \\
+    &> 1.96 \frac{\sqrt{e_A(1-e_A) + e_B(1-e_B)}}{\sqrt{n}} \\
+    \sqrt{n} &> \frac{1.96}{0.1} \sqrt{e_A(1-e_A) + e_B(1-e_B)} \\
+    \Longrightarrow n &> 384.16 (e_A(1-e_A) + e_B(1-e_B))
+\end{align*}
+
+
 
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
