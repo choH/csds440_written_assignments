@@ -117,18 +117,20 @@ As we may model our calculation as a Gaussian distribution, a $95\%$ CI is aroun
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \section{Problem 36}
-According to the problem ,we can easily assume Professors Bob‘s experiment result is $[ x1 , x2 ]$ with C\% confidence intervals after N times independent experiment. As the same, we can get Professors Nan’s experiment result is $[ x3 , x4 ]$ with C\% confidence intervals after N times independent experiment. So based on the relationships . According to the definition of confidence intervals:\newline
-$[(e_{A} - k * \sigma_{A}), (e_{A} + k * \sigma_{A}) ]$ where $k$ is changed by the C\% confidence.\newline
-So we can easily get the following two Professors total times with error experiment results:\newline
-Professors Bob: $E1: N * 0.5(x1 + x2)$ and Professors Nan: $E2: N * 0.5(x3 + x4)$\newline
-Based on the independent experiment ,we can add the different experiment results to replace the new experiment results, we can think the Professor Scoop’s experiment results are:\newline
-Total times experiment results: $2N$\newline
-Total times with error experiment results: $E1 + E2$\newline
-Based on this results we can calculate the results of Professor Scoop:\newline
-$e = (E1 + E2) / 2N$ and $\sigma^2 = e(1 - e) / 2N$ and $\sigma = \sqrt{e(1 - e) / 2N}$\newline
-So with the C\% confidence, the confidence interval can be expressed:\newline
-$[(e - k\sigma), (e+k\sigma)]$\newline
-Therefore $[(e - k\sigma), (e+k\sigma)]$ is the best confidence interval that Professor Scoop could report that would be consistent with Profs. Bob and Nan’s findings.
+
+%
+% According to the problem ,we can easily assume Professors Bob‘s experiment result is $[ x1 , x2 ]$ with C\% confidence intervals after N times independent experiment. As the same, we can get Professors Nan’s experiment result is $[ x3 , x4 ]$ with C\% confidence intervals after N times independent experiment. So based on the relationships . According to the definition of confidence intervals:\newline
+% $[(e_{A} - k * \sigma_{A}), (e_{A} + k * \sigma_{A}) ]$ where $k$ is changed by the C\% confidence.\newline
+% So we can easily get the following two Professors total times with error experiment results:\newline
+% Professors Bob: $E1: N * 0.5(x1 + x2)$ and Professors Nan: $E2: N * 0.5(x3 + x4)$\newline
+% Based on the independent experiment ,we can add the different experiment results to replace the new experiment results, we can think the Professor Scoop’s experiment results are:\newline
+% Total times experiment results: $2N$\newline
+% Total times with error experiment results: $E1 + E2$\newline
+% Based on this results we can calculate the results of Professor Scoop:\newline
+% $e = (E1 + E2) / 2N$ and $\sigma^2 = e(1 - e) / 2N$ and $\sigma = \sqrt{e(1 - e) / 2N}$\newline
+% So with the C\% confidence, the confidence interval can be expressed:\newline
+% $[(e - k\sigma), (e+k\sigma)]$\newline
+% Therefore $[(e - k\sigma), (e+k\sigma)]$ is the best confidence interval that Professor Scoop could report that would be consistent with Profs. Bob and Nan’s findings.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -139,6 +141,35 @@ Therefore $[(e - k\sigma), (e+k\sigma)]$ is the best confidence interval that Pr
 % \raggedright
 % \bibliography{references.bib}
 % \bibliographystyle{plain}
+
+Known that the $95 \%$ CI are $[x_B, y_B]$ and $[x_N, y_N]$ respectively for two datasets, we may deduce the error rates to be $e_B = \frac{x_B + y_B}{2}$ and $e_N = \frac{x_N + y_N}{2}$ for their respective dataset.
+
+Assume Prof. Bob's dataset has $n_B$ examples and Prof. Nan has $n_N$ examples, Prof. Scoop may simply derive his version of error rate to be a combination of the both, which is $e_S = \frac{n_B e_B + n_N e_N}{n_B + n_N}$. This implies $n_S = n_B + n_N$, we may get this $n_S$ (and also $n_B, n_N$) by doing:
+
+\begin{align*}
+    x_B &= e_B - 2\sigma_B \\
+    2\sqrt{\frac{e_B(1-e_B)}{n_B}} &= e_B - x_B \\
+    \frac{4 e_B(1-e_B)}{n_B} &= (e_B - x_B)^2 \\
+    \Longrightarrow n_B &= \frac{4 e_B(1-e_B)}{(e_B - x_B)^2} \\
+    \text{By doing the same calculation for} \ &n_N \ \text{we have:} \\
+    n_N &= \frac{4 e_N(1-e_N)}{(e_N - x_N)^2} \\
+    \Longrightarrow n_S &= \frac{4 e_B(1-e_B)}{(e_B - x_B)^2} + \frac{4 e_N(1-e_N)}{(e_N - x_N)^2}
+\end{align*}
+
+Since $e_B, n_B, e_N, n_N, n_S$ are now all known, we can calculate $e_S$ accordingly. Now, assume Prof. Scoop will land with a $95 \%$ CI of $[x_S, y_S]$, then there must be:
+
+\begin{align*}
+    x_S &= e_S - 2 \sigma_S \\
+    &= e_S - 2\sqrt{\frac{e_S(1-e_S)}{n_S}} \\
+    y_S &= e_S + 2 \sigma_S \\
+    &= e_S + 2\sqrt{\frac{e_S(1-e_S)}{n_S}}
+\end{align*}
+
+The above two equations suggest we may derive $x_S$ and $y_S$ with just $e_S$ and $n_S$, which are two known value to us and also to Prof. Scoop. So Prof. Scoop -- while not doing any experiment -- may derive his $95\%$ CI base on Prof. Bob and Prof. Nan's results at the cost of his academic integrity.
+
+
+
+
 
 
 \end{document}
